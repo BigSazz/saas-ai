@@ -19,7 +19,7 @@ const SubjectFilter = () => {
             });
 
             router.push(newUrl, { scroll: false });
-        } else {
+        } else if (searchQuery !== 'all' && searchQuery.length > 0) {
             const newUrl = formUrlQuery({
                 params: searchParams.toString(),
                 key: 'subject',
