@@ -19,6 +19,7 @@ export const createCompanion = async (formData: CreateCompanion) => {
 };
 
 export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }: GetAllCompanions) => {
+    const { userId } = await auth();
     const supabase = createSupabaseClient();
 
     let query = supabase.from('companions').select();
@@ -37,7 +38,16 @@ export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }:
 
     if (error || !companions) throw new Error(error?.message || 'Failed to get all companions');
 
-    return companions;
+    // Get bookmarks for the current user
+    const { data: bookmarks } = await supabase.from('bookmarks').select('companion_id').eq('user_id', userId);
+
+    // Add bookmarked property to each companion
+    const companionsWithBookmarks = companions.map(companion => ({
+        ...companion,
+        bookmarked: bookmarks?.some(bookmark => bookmark.companion_id === companion.id) || false,
+    }));
+
+    return companionsWithBookmarks;
 };
 
 export const getCompanion = async (id: string) => {
