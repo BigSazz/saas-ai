@@ -78,7 +78,7 @@ const CompanionComponent = ({
             vapi.off('speech-start', onSpeechStart);
             vapi.off('speech-end', onSpeechEnd);
         };
-    }, []);
+    }, [companionId]);
 
     useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -112,7 +112,7 @@ const CompanionComponent = ({
             serverMessages: [],
         };
 
-        // @ts-expect-error
+        // @ts-expect-error - vapi.start types don't match the actual implementation
         vapi.start(configureAssistant(voice, style, duration), assistantOverrides);
     };
 

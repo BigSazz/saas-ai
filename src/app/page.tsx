@@ -7,7 +7,7 @@ import React from 'react';
 
 const Page = async () => {
     const companions = await getAllCompanions({ limit: 3 });
-    const recentSessions = await getRecentSessions(3);
+    const recentSessions = await getRecentSessions(5);
 
     return (
         <main>
