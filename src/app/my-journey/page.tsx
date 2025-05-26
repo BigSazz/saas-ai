@@ -18,7 +18,13 @@ const Profile = async () => {
         <main className="min-lg:w-3/4">
             <section className="flex items-center justify-between gap-4 max-sm:flex-col">
                 <div className="flex items-center gap-4">
-                    <Image src={user.imageUrl} alt={user.firstName!} width={110} height={110} />
+                    <Image
+                        src={user.imageUrl}
+                        alt={user.firstName!}
+                        width={110}
+                        height={110}
+                        className="rounded-full"
+                    />
                     <div className="flex flex-col gap-2">
                         <h1 className="text-2xl font-bold">
                             {user.firstName} {user.lastName}
@@ -27,14 +33,14 @@ const Profile = async () => {
                     </div>
                 </div>
                 <div className="flex gap-4">
-                    <div className="flex h-fit flex-col gap-2 rounded-lg border border-black p-3">
+                    <div className="flex h-fit flex-col gap-2 rounded-lg border border-[#fe5933] p-3">
                         <div className="flex items-center gap-2">
                             <Image src="/icons/check.svg" alt="checkmark" width={22} height={22} />
                             <p className="text-2xl font-bold">{sessionHistory.length}</p>
                         </div>
                         <div>Lessons completed</div>
                     </div>
-                    <div className="rouded-lg flex h-fit flex-col gap-2 border border-black p-3">
+                    <div className="flex h-fit flex-col gap-2 rounded-lg border border-[#fe5933] p-3">
                         <div className="flex items-center gap-2">
                             <Image src="/icons/cap.svg" alt="cap" width={22} height={22} />
                             <p className="text-2xl font-bold">{companions.length}</p>

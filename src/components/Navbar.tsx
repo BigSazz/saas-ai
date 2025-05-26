@@ -2,6 +2,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import NavItems from './NavItems';
+import { ThemeToggle } from './theme-toggle';
 
 const Navbar = () => {
     return (
@@ -13,6 +14,7 @@ const Navbar = () => {
             </Link>
             <div className="flex items-center gap-8">
                 <NavItems />
+                <ThemeToggle />
                 <SignedOut>
                     <SignInButton>
                         <button className="btn-signin">Sign In</button>
